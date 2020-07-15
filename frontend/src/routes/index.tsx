@@ -21,35 +21,14 @@ import CourierContext from 'pages/Couriers/CourierContext';
 import { OrderPrevious, RecipientPrevious, CourierPrevious } from 'types';
 
 const Routes = (): ReactElement => {
-  const [recipientPrevious, setRecipientPrevious] = useState<RecipientPrevious>(
-    {
-      name: '',
-      address_name: '',
-      address_number: '',
-      street_add_on: '',
-      state: '',
-      city: '',
-      postal_code: '',
-    }
-  );
-  const [orderPrevious, setOrderPrevious] = useState<OrderPrevious>({
-    courier_id: 0,
-    recipient_id: 0,
-    product: '',
-  });
-  const [courierPrevious, setCourierPrevious] = useState<CourierPrevious>({
-    name: '',
-    email: '',
-  });
+  const [recipientPrevious, setRecipientPrevious] = useState<RecipientPrevious | null>(null);
+  const [orderPrevious, setOrderPrevious] = useState<OrderPrevious | null>(null)
+  const [courierPrevious, setCourierPrevious] = useState<CourierPrevious | null>(null)
   function setOrderContext(oldRecipient: OrderPrevious) {
     setOrderPrevious(oldRecipient);
   }
   function resetOrderContext() {
-    setOrderPrevious({
-      courier_id: 0,
-      recipient_id: 0,
-      product: '',
-    });
+    setOrderPrevious(null);
   }
   function setRecipientState(oldRecipient: RecipientPrevious) {
     setRecipientPrevious(oldRecipient);
@@ -58,21 +37,10 @@ const Routes = (): ReactElement => {
     setCourierPrevious(oldCourier);
   }
   function resetCourierState() {
-    setCourierPrevious({
-      name: '',
-      email: '',
-    });
+    setCourierPrevious(null);
   }
   function resetRecipient() {
-    setRecipientPrevious({
-      name: '',
-      address_name: '',
-      address_number: '',
-      street_add_on: '',
-      state: '',
-      city: '',
-      postal_code: '',
-    });
+    setRecipientPrevious(null);
   }
   return (
     <RecipientContext.Provider

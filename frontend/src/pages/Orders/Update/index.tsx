@@ -35,7 +35,7 @@ const OrderRegister = ({
   const { id } = match.params;
   const [finished, setFinished] = useState(false);
 
-  const selectData = [
+  const selectData = context.orderPrevious ? [
     {
       value: context.orderPrevious.recipient_id,
       label: 'Sem alteração',
@@ -44,14 +44,15 @@ const OrderRegister = ({
       value: context.orderPrevious.courier_id,
       label: 'Sem alteração',
     },
-  ];
+  ] : undefined
 
   const formRef = useRef<FormHandles>(null);
+
   useEffect(() => {
-    formRef.current?.setFieldValue('recipient_id', selectData[0]);
-    formRef.current?.setFieldValue('courier_id', selectData[1]);
-    formRef.current?.setFieldValue('product', context.orderPrevious.product);
-  });
+    formRef.current?.setFieldValue('recipient_id', selectData![0]);
+    formRef.current?.setFieldValue('courier_id', selectData![1]);
+    formRef.current?.setFieldValue('product', context.orderPrevious!.product);
+  },[selectData]);
 
   const handleSubmit: SubmitHandler<FormData> = data => {
     async function createOrder(formData: FormData) {

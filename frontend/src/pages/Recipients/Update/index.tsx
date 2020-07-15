@@ -106,7 +106,7 @@ const RecipientUpdate = ({
 
       <Form
         ref={formRef}
-        initialData={context.recipientPrevious}
+        initialData={context.recipientPrevious ? context.recipientPrevious : undefined}
         onSubmit={handleSubmit}
       >
         <header>

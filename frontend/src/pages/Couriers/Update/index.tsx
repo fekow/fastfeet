@@ -30,10 +30,10 @@ const CourierUpdate = ({
   const { courierPrevious, resetCourierState } = useContext(CourierContext);
   const { id } = match.params;
   const [finished, setFinished] = useState(false);
-  const data = {
+  const data = courierPrevious ? {
     ...courierPrevious,
     avatar_id: { ...courierPrevious.avatar, id: courierPrevious.avatar_id },
-  };
+  } : undefined;
   const formRef = useRef<FormHandles>(null);
   const handleSubmit: SubmitHandler<FormData> = data => {
     async function createCourier() {

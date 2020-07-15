@@ -65,7 +65,7 @@ export interface RecipientPrevious {
   postal_code: string;
 }
 export interface RecipientState {
-  recipientPrevious: RecipientPrevious;
+  recipientPrevious: RecipientPrevious | null;
   setRecipientState: CallableFunction;
   resetRecipient: CallableFunction;
 }
@@ -77,7 +77,7 @@ export interface OrderPrevious {
 }
 
 export interface OrderState {
-  orderPrevious: OrderPrevious;
+  orderPrevious: OrderPrevious | null;
   setOrderContext: CallableFunction;
   resetOrderContext: CallableFunction;
 }
@@ -93,7 +93,7 @@ export interface CourierPrevious {
   };
 }
 export interface CourierState {
-  courierPrevious: CourierPrevious;
+  courierPrevious: CourierPrevious | null;
   setCourierState: CallableFunction;
   resetCourierState: CallableFunction;
 }
